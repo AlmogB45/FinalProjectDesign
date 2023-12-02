@@ -38,7 +38,7 @@ public class AnimalFactory {
         zoo.addAnimal(newAnimal, enclosureID);
 
         // Update counts and averages in the zoo
-        zoo.updateAnimalCount(zoo.getNumAnimals() + 1);
+        zoo.updateAnimalCount(zoo.getNumAnimals() + 1); //TODO במקרה של ספירת חיות לא תקינה, לבדוק את ה-1+
         zoo.updateEnclosureCount(zoo.getNumEnclosures());
 
         // Display updated statistics

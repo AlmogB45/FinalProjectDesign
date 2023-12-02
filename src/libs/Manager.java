@@ -6,11 +6,18 @@ import java.nio.file.Paths;
 import Zoo.*;
 
 
+
 public class Manager extends Employee {
+    private static Zoo zoo;
     static String filePath = "src/data/employees";
+
 
     public Manager(String firstName, String lastName, String phone, int employeeId, String role) {
         super(firstName, lastName, phone, employeeId, role);
+    }
+
+    public static void setZoo(Zoo zoo) {
+        Manager.zoo = zoo;
     }
 
     public static void addEmployee(String firstName, String lastName, String role, int employeeId, String phone) {
@@ -83,7 +90,12 @@ public class Manager extends Employee {
         }
     }
 
-    public static void viewZooStat(Zoo zoo) {
+    public static void viewZooStat() {
+        if (zoo == null) {
+            System.out.println("Zoo not set for the Manager.");
+            return;
+        }
+
         System.out.println("Zoo Overview:");
         System.out.println("Number of Existing Animals: " + zoo.getNumAnimals());
         System.out.println("Number of Enclosures: " + zoo.getNumEnclosures());
@@ -104,6 +116,8 @@ public class Manager extends Employee {
         System.out.println("Sick Animals: " + numSickAnimals);
         System.out.println("Healthy Animals: " + numHealthyAnimals);
     }
+    
+    
 }
 
 

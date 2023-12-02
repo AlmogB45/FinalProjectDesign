@@ -1,17 +1,19 @@
 import libs.Manager;
 import libs.Visitor;
-import Zoo.AnimalFactory;
 import Zoo.Zoo;
 import java.util.Scanner;
-
 
 
 public class MenuManager {
     private static Scanner scanner;
     private Zoo zoo;
-    private Manager manager;
+    private static Manager manager;
+
+
 
     public MenuManager() {
+        this.zoo = zoo;
+        this.manager = manager;
         this.scanner = new Scanner(System.in);
     }
 
@@ -109,6 +111,10 @@ public class MenuManager {
 
             switch (choice) {
                 case 1:
+                    if (manager == null) {
+                        System.out.println("Manager instance doesn't exist. Creating a new Manager.");
+                        createManager();
+                    }
                     managerMenu();
                     break;
 
@@ -124,6 +130,20 @@ public class MenuManager {
                     break;
             }
         }
+    }
+
+    private static void createManager() {
+        System.out.print("Enter Manager's First Name: ");
+        String managerFirstName = scanner.next();
+        System.out.print("Enter Manager's Last Name: ");
+        String managerLastName = scanner.next();
+        System.out.print("Enter Manager's Phone: ");
+        String managerPhone = scanner.next();
+
+        // Create a new Manager instance
+        manager = new Manager(managerFirstName, managerLastName, managerPhone, 1, "Manager");
+        System.out.println("Manager instance created successfully.");
+
     }
 
     private static void managerMenu() {
@@ -164,9 +184,9 @@ public class MenuManager {
                     Manager.displayEmployeeList();
                     break;
                 case 4:
-                    // Assuming you have an instance of Zoo (you need to create and pass it to Manager)
-                    Zoo zoo = new Zoo(/* pass appropriate parameters here */);
-                    Manager.viewZooStat(zoo);
+                    Manager.viewZooStat();
+                    break;
+                case 5:
                     break;
                 default:
                     System.out.println("Invalid choice!");
