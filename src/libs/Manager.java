@@ -8,7 +8,7 @@ import Zoo.*;
 
 
 public class Manager extends Employee {
-    private static Zoo zoo;
+    static  Zoo zoo;
     static String filePath = "src/data/employees";
 
 

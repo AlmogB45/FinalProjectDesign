@@ -21,7 +21,7 @@ public class Main {
         Manager.setZoo(zoo);
 
         // Creating an AnimalFactory object and passing the Zoo object
-//        AnimalFactory animalFactory = new AnimalFactory(zoo);
+        AnimalFactory animalFactory = new AnimalFactory(zoo);
 //
 //        // Creating animals using the AnimalFactory
 //        animalFactory.createAnimal();

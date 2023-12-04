@@ -4,7 +4,7 @@ import libs.Manager;
 
 import java.util.Scanner;
 
-public class ZooBuilderPattern {
+public class ZooBuilderPattern { //TODO Check validity of this class to avoid duplications!!
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 

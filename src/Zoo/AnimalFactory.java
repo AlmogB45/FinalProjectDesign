@@ -3,13 +3,13 @@ package Zoo;
 import java.util.Scanner;
 
 public class AnimalFactory {
-    private Zoo zoo;
+    private static Zoo zoo;
 
     public AnimalFactory(Zoo zoo) {
         this.zoo = zoo;
     }
 
-    public void createAnimal() {
+    public static void createAnimal() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter Name: ");
@@ -38,11 +38,38 @@ public class AnimalFactory {
         zoo.addAnimal(newAnimal, enclosureID);
 
         // Update counts and averages in the zoo
-        zoo.updateAnimalCount(zoo.getNumAnimals() + 1); //TODO במקרה של ספירת חיות לא תקינה, לבדוק את ה-1+
+        zoo.updateAnimalCount(zoo.getNumAnimals());
         zoo.updateEnclosureCount(zoo.getNumEnclosures());
 
         // Display updated statistics
         System.out.println("Animal added successfully!");
+        System.out.println("Updated Animal Count: " + zoo.getAnimalCount());
+        System.out.println("Updated Enclosure Count: " + zoo.getEnclosureCount());
+        System.out.println("Average Animal Age: " + zoo.getAverageAnimalAge());
+        System.out.println("Average Animal Weight: " + zoo.getAverageAnimalWeight());
+    }
+
+    public static void removeAnimal() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter AnimalID to remove: ");
+        int animalIDToRemove = scanner.nextInt();
+
+        // Attempt to remove the animal
+        boolean removed = zoo.removeAnimal(animalIDToRemove);
+
+        // Print the result
+        if (removed) {
+            System.out.println("Animal with ID " + animalIDToRemove + " removed successfully!");
+        } else {
+            System.out.println("Animal with ID " + animalIDToRemove + " not found in the zoo.");
+        }
+
+        // Update counts and averages in the zoo
+        zoo.updateAnimalCount(zoo.getNumAnimals());
+        zoo.updateEnclosureCount(zoo.getNumEnclosures());
+
+        // Display updated statistics
         System.out.println("Updated Animal Count: " + zoo.getAnimalCount());
         System.out.println("Updated Enclosure Count: " + zoo.getEnclosureCount());
         System.out.println("Average Animal Age: " + zoo.getAverageAnimalAge());
