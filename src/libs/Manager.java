@@ -116,8 +116,6 @@ public class Manager extends Employee {
         System.out.println("Sick Animals: " + numSickAnimals);
         System.out.println("Healthy Animals: " + numHealthyAnimals);
     }
-    
-    
+
+
 }
-
-

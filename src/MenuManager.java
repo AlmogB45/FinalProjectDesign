@@ -1,5 +1,6 @@
 import libs.AnimalHandler;
 import libs.Manager;
+import libs.Veterinarian;
 import libs.Visitor;
 import Zoo.Zoo;
 import Zoo.AnimalFactory;
@@ -114,7 +115,7 @@ public class MenuManager {
                     break;
 
                 case 3:
-                    // Go back to the main menu
+                    vetMenu();
                     return;
 
                 default:
@@ -208,7 +209,7 @@ public class MenuManager {
                     break;
                 case 3:
                     System.out.print("Enter Animal ID: ");
-                    int animalID = scanner.nextInt();
+                    int animalID = scanner.nextInt(); //TODO Check why animalID here do not connect with animalID in class
                     System.out.print("Enter Enclosure ID: ");
                     int enclosureID = scanner.nextInt();
                     AnimalHandler.feedAnimal(animalID, enclosureID);
@@ -218,6 +219,27 @@ public class MenuManager {
                     break;
             }
 
+        }
+    }
+
+    private static void vetMenu() {
+        String[] vetOptions = {
+                "\n1 - Treat Animal"
+        };
+
+        while (true) {
+            printMenu(vetOptions);
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter Animal ID: ");
+                    int animalID = scanner.nextInt(); //TODO Check why animalID here do not connect with animalID in class
+                    Veterinarian.treatAnimal(animalID);
+                    break;
+                case 2:
+                    break;
+            }
         }
     }
 }

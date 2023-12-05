@@ -5,6 +5,7 @@ public class Animal {
     private int age;
     private double weight;
     private boolean isSick;
+    private boolean isHealthy;
     private String color;
     private int animalID;
     private int enclosureID; //TODO Check relevance to AnimalHandler enclosureID
@@ -17,6 +18,10 @@ public class Animal {
         this.color = color;
         this.animalID = animalID;
         this.enclosureID = enclosureID;
+    }
+
+    public void setSick(boolean isSick) {
+        this.isSick = isSick;
     }
 
     // Getter methods for the new attributes
@@ -34,6 +39,10 @@ public class Animal {
 
     public boolean isSick() {
         return isSick;
+    }
+
+    public boolean isHealthy() {
+        return isHealthy;
     }
 
     public String getColor() {
