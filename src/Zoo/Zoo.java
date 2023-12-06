@@ -42,10 +42,12 @@ public class Zoo {
     public void addAnimal(Animal animal, int enclosureId) {
         animals.add(animal);
 
+        // Ensure that the animalsInEnclosures list has enough elements
         while (animalsInEnclosures.size() <= enclosureId) {
             animalsInEnclosures.add(0);
         }
 
+        // Update the count of animals in the enclosure
         animalsInEnclosures.set(enclosureId, animalsInEnclosures.get(enclosureId) + 1);
     }
 

@@ -209,13 +209,15 @@ public class MenuManager {
                     break;
                 case 3:
                     System.out.print("Enter Animal ID: ");
-                    int animalID = scanner.nextInt(); //TODO Check why animalID here do not connect with animalID in class
+                    int animalID = scanner.nextInt();
                     System.out.print("Enter Enclosure ID: ");
                     int enclosureID = scanner.nextInt();
                     AnimalHandler.feedAnimal(animalID, enclosureID);
                     break;
                 case 4:
-                    AnimalHandler.viewZooStat();
+                    System.out.print("Enter Enclosure ID: ");
+                    enclosureID = scanner.nextInt();
+                    AnimalHandler.feedEnclosure(enclosureID);
                     break;
             }
 

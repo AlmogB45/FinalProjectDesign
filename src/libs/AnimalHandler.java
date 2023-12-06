@@ -18,25 +18,20 @@ public class AnimalHandler extends Employee {
             return;
         }
 
-        System.out.println("Num Enclosures: " + zoo.getNumEnclosures());
-        System.out.println("Animals in Enclosure " + enclosureID + ": " + zoo.getAnimalsInEnclosure(enclosureID));
-
-        // Check if the specified enclosure exists
-        if (enclosureID < 0 || enclosureID >= zoo.getNumEnclosures() || zoo.getAnimalsInEnclosure(enclosureID) == 0) {
-            System.out.println("Error: Enclosure with ID " + enclosureID + " does not exist or is empty.");
-            return;
-        }
-
         // Check if the specified animal exists in the specified enclosure
         boolean animalFound = false;
+        String animalName = "";
         for (Animal animal : zoo.getAnimals()) {
             if (animal.getAnimalID() == animalID && animal.getEnclosureID() == enclosureID) {
                 animalFound = true;
+                animalName = animal.getName();
 
-                // Perform feeding action here if needed
-                // ...
+                // Perform feeding action here (if needed)
 
-                System.out.println("Animal with ID " + animalID + " in Enclosure " + enclosureID + " fed successfully!");
+                // Display a message indicating that the animal was fed successfully
+                System.out.println("Animal: " + animalName + " with ID: " + animalID + " in Enclosure: " + enclosureID + " fed successfully!");
+
+                // Break out of the loop once the animal is found and fed
                 break;
             }
         }
@@ -45,64 +40,41 @@ public class AnimalHandler extends Employee {
         if (!animalFound) {
             System.out.println("Error: Animal with ID " + animalID + " not found in Enclosure " + enclosureID + ".");
         }
-
-        // Display updated statistics after feeding
-        viewZooStat();
     }
 
-    public void feedEnclosure(int enclosureID) { //TODO Fix method, same as feedAnimal (EnclosureID)
+    public static void feedEnclosure(int enclosureID) {
         if (zoo == null) {
             System.out.println("Zoo not set.");
             return;
         }
 
         // Check if the specified enclosure exists
-        if (enclosureID >= zoo.getNumEnclosures() || zoo.getAnimalsInEnclosure(enclosureID) == 0) {
+        if (zoo.getAnimalsInEnclosure(enclosureID) == 0) {
             System.out.println("Error: Enclosure with ID " + enclosureID + " does not exist or is empty.");
             return;
         }
 
-        // Feed all animals in the specified enclosure
+        // Feed all animals in the specified enclosure using feedAnimal method
         for (Animal animal : zoo.getAnimals()) {
             if (animal.getEnclosureID() == enclosureID) {
-                // Perform feeding action here if needed
-                // ...
-                // Update the count for the fed animal
-                // ...
-                System.out.println("Animal with ID " + animal.getAnimalID() + " in Enclosure " + enclosureID + " fed successfully!");
+                // Perform feeding action here (if needed)
+                feedAnimal(animal.getAnimalID(), enclosureID);
             }
         }
+
+        // Display a message indicating that all animals in the enclosure were fed successfully
+        System.out.println("\nEnclosure " + enclosureID + " fed successfully!");
 
         // Display updated statistics after feeding
         viewZooStat();
     }
 
 
+
+
     public static void viewZooStat() {
-        if (zoo == null) {
-            System.out.println("Zoo not set.");
-            return;
-        }
-
-        System.out.println("|--Zoo Overview--|");
-        System.out.println("\nNumber of Existing Animals: " + zoo.getNumAnimals());
-        System.out.println("Number of Enclosures: " + zoo.getNumEnclosures());
-        System.out.println("Average Animal Age: " + zoo.getAverageAnimalAge());
-        System.out.println("Average Animal Weight: " + zoo.getAverageAnimalWeight());
-
-        // Display number of animals in each enclosure
-        System.out.println("\nNumber of Animals in Each Enclosure:");
-        for (int enclosureId = 0; enclosureId < zoo.getNumEnclosures(); enclosureId++) {
-            int animalsInEnclosure = zoo.getAnimalsInEnclosure(enclosureId);
-            System.out.println("Enclosure " + enclosureId + ": " + animalsInEnclosure + " animals");
-        }
-
-        // Display number of sick and healthy animals
-        System.out.println("\nNumber of Sick and Healthy Animals:");
-        int numSickAnimals = zoo.getNumSickAnimals();
-        int numHealthyAnimals = zoo.getNumAnimals() - numSickAnimals;
-        System.out.println("Sick Animals: " + numSickAnimals);
-        System.out.println("Healthy Animals: " + numHealthyAnimals);
     }
+
+
 
 }
