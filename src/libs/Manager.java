@@ -96,8 +96,8 @@ public class Manager extends Employee {
             return;
         }
 
-        System.out.println("Zoo Overview:");
-        System.out.println("Number of Existing Animals: " + zoo.getNumAnimals());
+        System.out.println("|--Zoo Overview--|");
+        System.out.println("\nNumber of Existing Animals: " + zoo.getNumAnimals());
         System.out.println("Number of Enclosures: " + zoo.getNumEnclosures());
         System.out.println("Average Animal Age: " + zoo.getAverageAnimalAge());
         System.out.println("Average Animal Weight: " + zoo.getAverageAnimalWeight());
@@ -112,7 +112,7 @@ public class Manager extends Employee {
         // Display number of sick and healthy animals
         System.out.println("\nNumber of Sick and Healthy Animals:");
         int numSickAnimals = zoo.getNumSickAnimals();
-        int numHealthyAnimals = zoo.getNumAnimals() - numSickAnimals;
+        int numHealthyAnimals = zoo.getNumHealthyAnimals();
         System.out.println("Sick Animals: " + numSickAnimals);
         System.out.println("Healthy Animals: " + numHealthyAnimals);
     }

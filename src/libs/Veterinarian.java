@@ -26,7 +26,7 @@ public class Veterinarian extends Employee {
         }
 
         // If the animal is found, update its health status
-        if (targetAnimal != null) { //TODO check why method do not recognize sick animals when they ARE sick!
+        if (targetAnimal != null) {
             if (targetAnimal.isSick()) {
                 targetAnimal.setSick(false);
                 zoo.updateSickAnimalCount(zoo.getNumSickAnimals() - 1);
@@ -44,8 +44,19 @@ public class Veterinarian extends Employee {
     }
 
     public static void viewZooStat() {
-        // This method should display the updated zoo statistics
-        // It is assumed that the viewZooStat method exists in the Employee or Manager class
+    }
+
+    public static void viewAnimalHealth() {
+        if (zoo == null) {
+            System.out.println("Zoo not set for Veterinarian.");
+            return;
+        }
+        System.out.println("\nNumber of Existing Animals: " + zoo.getNumAnimals());
+        System.out.println("\nNumber of Sick and Healthy Animals:");
+        int numSickAnimals = zoo.getNumSickAnimals();
+        int numHealthyAnimals = zoo.getNumHealthyAnimals();
+        System.out.println("Sick Animals: " + numSickAnimals);
+        System.out.println("Healthy Animals: " + numHealthyAnimals);
     }
 }
 

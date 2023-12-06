@@ -12,14 +12,17 @@ public class AnimalHandler extends Employee {
         super(firstName, lastName, phone, employeeId, role);
     }
 
-    public static void feedAnimal(int animalID, int enclosureID) { //TODO Create EnclosureID in Zoo, and add it to Manager.viewZooStats, AnimalHandler, and Maybe ZooBuild
+    public static void feedAnimal(int animalID, int enclosureID) {
         if (zoo == null) {
             System.out.println("Zoo not set.");
             return;
         }
 
+        System.out.println("Num Enclosures: " + zoo.getNumEnclosures());
+        System.out.println("Animals in Enclosure " + enclosureID + ": " + zoo.getAnimalsInEnclosure(enclosureID));
+
         // Check if the specified enclosure exists
-        if (enclosureID >= zoo.getNumEnclosures() || zoo.getAnimalsInEnclosure(enclosureID) == 0) {
+        if (enclosureID < 0 || enclosureID >= zoo.getNumEnclosures() || zoo.getAnimalsInEnclosure(enclosureID) == 0) {
             System.out.println("Error: Enclosure with ID " + enclosureID + " does not exist or is empty.");
             return;
         }
@@ -29,10 +32,8 @@ public class AnimalHandler extends Employee {
         for (Animal animal : zoo.getAnimals()) {
             if (animal.getAnimalID() == animalID && animal.getEnclosureID() == enclosureID) {
                 animalFound = true;
-                // Perform feeding action here if needed
-                // ...
 
-                // Update the count for the fed animal
+                // Perform feeding action here if needed
                 // ...
 
                 System.out.println("Animal with ID " + animalID + " in Enclosure " + enclosureID + " fed successfully!");
@@ -83,8 +84,8 @@ public class AnimalHandler extends Employee {
             return;
         }
 
-        System.out.println("Zoo Overview:");
-        System.out.println("Number of Existing Animals: " + zoo.getNumAnimals());
+        System.out.println("|--Zoo Overview--|");
+        System.out.println("\nNumber of Existing Animals: " + zoo.getNumAnimals());
         System.out.println("Number of Enclosures: " + zoo.getNumEnclosures());
         System.out.println("Average Animal Age: " + zoo.getAverageAnimalAge());
         System.out.println("Average Animal Weight: " + zoo.getAverageAnimalWeight());

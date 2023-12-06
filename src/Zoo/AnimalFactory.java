@@ -33,7 +33,7 @@ public class AnimalFactory {
 
         boolean isSick = Math.random() < 0.5;
 
-        Animal newAnimal = new Animal(name, age, weight, false, color, animalID, enclosureID);
+        Animal newAnimal = new Animal(name, age, weight, isSick, color, animalID, enclosureID);
 
 
         // Add the new animal to the zoo

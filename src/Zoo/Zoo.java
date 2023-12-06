@@ -6,8 +6,8 @@ import java.util.List;
 public class Zoo {
     private int animalCount;
     private int enclosureCount;
-    private int healthyAnimalCount = 0;
-    private int sickAnimalCount = 0;
+    private int healthyAnimalCount;
+    private int sickAnimalCount;
     private List<Animal> animals;
     private List<Integer> animalsInEnclosures;  // List to store the number of animals in each enclosure
 
@@ -91,9 +91,9 @@ public class Zoo {
         return count;
     }
 
-    public int getAnimalsInEnclosure(int enclosureId) {
-        if (enclosureId < animalsInEnclosures.size()) {
-            return animalsInEnclosures.get(enclosureId);
+    public int getAnimalsInEnclosure(int enclosureID) {
+        if (enclosureID < animalsInEnclosures.size()) {
+            return animalsInEnclosures.get(enclosureID);
         } else {
             return 0;
         }
@@ -124,12 +124,14 @@ public class Zoo {
     }
 
     public int getNumSickAnimals() {
+        int sickCount = 0; // Initialize a local variable to store the count
+
         for (Animal animal : animals) {
             if (animal.isSick()) {
-                sickAnimalCount++;
+                sickCount++;
             }
         }
-        return sickAnimalCount;
+        return sickCount;
     }
 
     public int getNumHealthyAnimals() {

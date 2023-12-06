@@ -193,7 +193,7 @@ public class MenuManager {
                 "\n1 - Add Animal",
                 "2 - Remove Animal",
                 "3 - Feed Animal",
-                "4 - Feed Enclosure"
+                "4 - Feed Enclosure\n"
         };
 
         while (true) {
@@ -224,7 +224,8 @@ public class MenuManager {
 
     private static void vetMenu() {
         String[] vetOptions = {
-                "\n1 - Treat Animal"
+                "\n1 - Treat Animal",
+                "2 - View Animals Health\n"
         };
 
         while (true) {
@@ -234,10 +235,11 @@ public class MenuManager {
             switch (choice) {
                 case 1:
                     System.out.print("Enter Animal ID: ");
-                    int animalID = scanner.nextInt(); //TODO Check why animalID here do not connect with animalID in class
+                    int animalID = scanner.nextInt();
                     Veterinarian.treatAnimal(animalID);
                     break;
                 case 2:
+                    Veterinarian.viewAnimalHealth();
                     break;
             }
         }
