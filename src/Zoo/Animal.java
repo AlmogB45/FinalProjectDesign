@@ -1,6 +1,12 @@
 package Zoo;
 
+import Interfaces.AnimalObserver;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Animal {
+    private String type;
     private String name;
     private int age;
     private double weight;
@@ -8,9 +14,12 @@ public class Animal {
     private boolean isHealthy;
     private String color;
     private int animalID;
-    private int enclosureID; //TODO Check relevance to AnimalHandler enclosureID
+    private int enclosureID;
 
-    public Animal(String name, int age, double weight, boolean isSick, String color, int animalID, int enclosureID) {
+    private List<AnimalObserver> observers = new ArrayList<>();
+
+    public Animal(String type, String name, int age, double weight, boolean isSick, String color, int animalID, int enclosureID) {
+        this.type = type;
         this.name = name;
         this.age = age;
         this.weight = weight;
@@ -24,6 +33,9 @@ public class Animal {
         this.isSick = isSick;
     }
 
+    public String getType() {
+        return type;
+    }
     // Getter methods for the new attributes
     public String getName() {
         return name;
@@ -52,8 +64,22 @@ public class Animal {
     public int getAnimalID() {
         return animalID;
     }
-
     public int getEnclosureID() {
         return enclosureID;
     }
+
+    public void addObserver(AnimalObserver observer) {
+        observers.add(observer);
+    }
+
+    public void removeObserver(AnimalObserver observer) {
+        observers.remove(observer);
+    }
+
+    public void notifyObservers() {
+        for (AnimalObserver observer : observers) {
+            observer.update(this);
+        }
+    }
 }
+

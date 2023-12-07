@@ -6,10 +6,18 @@ import Zoo.*;
 
 
 public class AnimalHandler extends Employee {
+    private static AnimalHandler instance = new AnimalHandler(getFirstName(), getLastName(), getPhone(), getEmployeeId(),getRole());
     private static final Zoo zoo = Manager.zoo;
 
-    public AnimalHandler(String firstName, String lastName, String phone, int employeeId, String role) {
-        super(firstName, lastName, phone, employeeId, role);
+    private AnimalHandler(String firstName, String lastName, String phone, int employeeId, String role) {
+        super("defaultFirstName", "defaultLastName", "defaultPhone", 0, "defaultRole");
+    }
+
+    public static AnimalHandler getInstance() {
+        if (instance == null) {
+            instance = new AnimalHandler("defaultFirstName", "defaultLastName", "defaultPhone", 0, "defaultRole");
+        }
+        return instance;
     }
 
     public static void feedAnimal(int animalID, int enclosureID) {
@@ -20,16 +28,18 @@ public class AnimalHandler extends Employee {
 
         // Check if the specified animal exists in the specified enclosure
         boolean animalFound = false;
+        String animalType = "";
         String animalName = "";
         for (Animal animal : zoo.getAnimals()) {
             if (animal.getAnimalID() == animalID && animal.getEnclosureID() == enclosureID) {
                 animalFound = true;
                 animalName = animal.getName();
+                animalType = animal.getType();
 
                 // Perform feeding action here (if needed)
 
                 // Display a message indicating that the animal was fed successfully
-                System.out.println("Animal: " + animalName + " with ID: " + animalID + " in Enclosure: " + enclosureID + " fed successfully!");
+                System.out.println("Animal: " + animalName + " from type: " + animalType + " with ID: " + animalID + " in Enclosure: " + enclosureID + " fed successfully!");
 
                 // Break out of the loop once the animal is found and fed
                 break;

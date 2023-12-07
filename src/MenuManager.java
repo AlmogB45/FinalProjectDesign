@@ -75,7 +75,7 @@ public class MenuManager {
                     String checkInLastName = scanner.next();
                     System.out.print("Enter Visitor's Age: ");
                     int checkInAge = scanner.nextInt();
-                    System.out.print("Enter Visitor's Phone: \n");
+                    System.out.print("Enter Visitor's Phone: ");
                     String checkInPhone = scanner.next();
 
                     Visitor.visitZoo(checkInFirstName, checkInLastName, checkInAge, checkInPhone);
@@ -83,12 +83,12 @@ public class MenuManager {
                 case 2:
                     System.out.print("Enter Visitor's First Name: ");
                     String checkOutFirstName = scanner.next();
-                    System.out.print("Enter Visitor's Last Name: \n");
+                    System.out.print("Enter Visitor's Last Name: ");
                     String checkOutLastName = scanner.next();
                     Visitor.removeVisitorFromZoo(checkOutFirstName, checkOutLastName);
                     break;
                 case 3:
-                    System.out.print("\nReturning to previous menu!");
+                    System.out.print("\nReturning to previous menu!\n");
                     Menu();
                     break;
             }
@@ -124,7 +124,7 @@ public class MenuManager {
                     vetMenu();
                     break;
                 case 4:
-                    System.out.print("\nReturning to previous menu!");
+                    System.out.print("\nReturning to previous menu!\n");
                     Menu();
                     break;
 
@@ -167,11 +167,11 @@ public class MenuManager {
                     String addFirstName = scanner.next();
                     System.out.print("Enter Employee's Last Name: ");
                     String addLastName = scanner.next();
-                    System.out.print("Enter Employee's Role: ");
+                    System.out.print("Enter Employee's Role (No Spaces!): ");
                     String addRole = scanner.next();
                     System.out.print("Enter Employee's ID: ");
                     int addEmployeeId = scanner.nextInt();
-                    System.out.print("Enter Employee's Phone: \n");
+                    System.out.print("Enter Employee's Phone: ");
                     String addPhone = scanner.next();
 
                     Manager.addEmployee(addFirstName, addLastName, addRole, addEmployeeId, addPhone);
@@ -191,7 +191,7 @@ public class MenuManager {
                     Manager.viewZooStat();
                     break;
                 case 5:
-                    System.out.print("\nReturning to previous menu!");
+                    System.out.print("\nReturning to previous menu!\n");
                     manageEmployee();
                     break;
                 default:
@@ -234,7 +234,7 @@ public class MenuManager {
                     AnimalHandler.feedEnclosure(enclosureID);
                     break;
                 case 5:
-                    System.out.print("\nReturning to previous menu!");
+                    System.out.print("\nReturning to previous menu!\n");
                     manageEmployee();
             }
 
@@ -256,14 +256,17 @@ public class MenuManager {
                 case 1:
                     System.out.print("Enter Animal ID: ");
                     int animalID = scanner.nextInt();
-                    Veterinarian.treatAnimal(animalID);
+                    System.out.print("Enter Enclosure ID: ");
+                    int enclosureID = scanner.nextInt();
+                    Veterinarian.treatAnimal(animalID, enclosureID);
                     break;
                 case 2:
                     Veterinarian.viewAnimalHealth();
                     break;
                 case 3:
-                    System.out.print("\nReturning to previous menu!");
+                    System.out.print("\nReturning to previous menu!\n");
                     manageEmployee();
+                    break;
             }
         }
     }

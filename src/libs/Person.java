@@ -2,7 +2,7 @@ package libs;
 
 abstract class Person {
     private static String firstName;
-    private static String lastName;
+    private  static String lastName;
     private static String phone;
 
     public Person(String firstName, String lastName, String phone) {

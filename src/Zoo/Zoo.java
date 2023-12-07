@@ -2,6 +2,7 @@ package Zoo;
 
 import java.util.ArrayList;
 import java.util.List;
+import Interfaces.AnimalObserver;
 
 public class Zoo {
     private int animalCount;
@@ -11,11 +12,14 @@ public class Zoo {
     private List<Animal> animals;
     private List<Integer> animalsInEnclosures;  // List to store the number of animals in each enclosure
 
+    private List<AnimalObserver> observers;
+
     public Zoo(ZooBuild zooBuild) {
         this.animalCount = zooBuild.getAnimalCount();
         this.enclosureCount = zooBuild.getEnclosureCount();
         this.animals = new ArrayList<>();
         this.animalsInEnclosures = new ArrayList<>();
+        this.observers = new ArrayList<>();
     }
 
     public Zoo() {
@@ -39,6 +43,17 @@ public class Zoo {
         enclosureCount = newCount;
     }
 
+    public void registerObserver(AnimalObserver observer) {
+        observers.add(observer);
+    }
+
+    // New method to notify observers of a health status change
+    private void notifyObservers(Animal animal) {
+        for (AnimalObserver observer : observers) {
+            observer.update(animal);
+        }
+    }
+
     public void addAnimal(Animal animal, int enclosureId) {
         animals.add(animal);
 
@@ -49,6 +64,7 @@ public class Zoo {
 
         // Update the count of animals in the enclosure
         animalsInEnclosures.set(enclosureId, animalsInEnclosures.get(enclosureId) + 1);
+        notifyObservers(animal);
     }
 
     public boolean removeAnimal(int animalID) {
