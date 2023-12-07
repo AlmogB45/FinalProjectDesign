@@ -58,42 +58,54 @@ public class MenuManager {
     }
 
     private static void manageVisitor() {
+        int choice = 1;
         String[] visitorOptions = {"\n1 - Check into the Zoo",
                 "2 - Check out of the Zoo",
                 "3 - Back \n"
         };
 
-        while (true) {
+        while (choice != 3) {
             printMenu(visitorOptions);
-            int choice = scanner.nextInt();
+            try {
+                choice = scanner.nextInt();
 
-            switch (choice) {
-                case 1:
-                    System.out.print("Enter Visitor's First Name: ");
-                    String checkInFirstName = scanner.next();
-                    System.out.print("Enter Visitor's Last Name: ");
-                    String checkInLastName = scanner.next();
-                    System.out.print("Enter Visitor's Age: ");
-                    int checkInAge = scanner.nextInt();
-                    System.out.print("Enter Visitor's Phone: ");
-                    String checkInPhone = scanner.next();
+                if (choice < 1 || choice > visitorOptions.length) {
+                    System.out.println("\n Please enter an integer between 1 and " + visitorOptions.length);
+                    continue; // restart the loop
+                }
 
-                    Visitor.visitZoo(checkInFirstName, checkInLastName, checkInAge, checkInPhone);
-                    break;
-                case 2:
-                    System.out.print("Enter Visitor's First Name: ");
-                    String checkOutFirstName = scanner.next();
-                    System.out.print("Enter Visitor's Last Name: ");
-                    String checkOutLastName = scanner.next();
-                    Visitor.removeVisitorFromZoo(checkOutFirstName, checkOutLastName);
-                    break;
-                case 3:
-                    System.out.print("\nReturning to previous menu!\n");
-                    Menu();
-                    break;
+                switch (choice) {
+                    case 1:
+                        System.out.print("Enter Visitor's First Name: ");
+                        String checkInFirstName = scanner.next();
+                        System.out.print("Enter Visitor's Last Name: ");
+                        String checkInLastName = scanner.next();
+                        System.out.print("Enter Visitor's Age: ");
+                        int checkInAge = scanner.nextInt();
+                        // rest of the code...
+                        break;
+                    case 2:
+                        System.out.print("Enter Visitor's First Name: ");
+                        String checkOutFirstName = scanner.next();
+                        System.out.print("Enter Visitor's Last Name: ");
+                        String checkOutLastName = scanner.next();
+                        // rest of the code...
+                        break;
+                    case 3:
+                        System.out.print("\nReturning to the previous menu!\n");
+                        break;
+                    default:
+                        System.out.println("\nInvalid choice!\n");
+                        break;
+                }
+
+            } catch (Exception ex) {
+                System.out.println("\n Please enter a valid integer.");
+                scanner.next(); // clear the buffer
             }
         }
     }
+
 
 
     private static void manageEmployee() {
@@ -105,35 +117,47 @@ public class MenuManager {
 
         while (true) {
             printMenu(employeeOptions);
-            int choice = scanner.nextInt();
 
-            switch (choice) {
-                case 1:
-                    if (manager == null) {
-                        System.out.println("Manager instance doesn't exist. Creating a new Manager.\n");
-                        createManager();
-                    }
-                    managerMenu();
-                    break;
+            try {
+                int choice = scanner.nextInt();
 
-                case 2:
-                    animalHandlerMenu();
-                    break;
+                if (choice < 1 || choice > employeeOptions.length) {
+                    System.out.println("\n Please enter an integer between 1 and " + employeeOptions.length);
+                    continue; // restart the loop
+                }
 
-                case 3:
-                    vetMenu();
-                    break;
-                case 4:
-                    System.out.print("\nReturning to previous menu!\n");
-                    Menu();
-                    break;
+                switch (choice) {
+                    case 1:
+                        if (manager == null) {
+                            System.out.println("Manager instance doesn't exist. Creating a new Manager.\n");
+                            createManager();
+                        }
+                        managerMenu();
+                        break;
 
-                default:
-                    System.out.println("\nInvalid choice!\n");
-                    break;
+                    case 2:
+                        animalHandlerMenu();
+                        break;
+
+                    case 3:
+                        vetMenu();
+                        break;
+
+                    case 4:
+                        System.out.print("\nReturning to previous menu!\n");
+                        return; // exit the method
+
+                    default:
+                        System.out.println("\nInvalid choice!\n");
+                        break;
+                }
+            } catch (Exception ex) {
+                System.out.println("\nPlease enter an integer between 1 and " + employeeOptions.length);
+                scanner.next(); // clear the buffer
             }
         }
     }
+
 
     private static void createManager() {
         System.out.print("Enter Manager's First Name: ");
@@ -159,47 +183,58 @@ public class MenuManager {
 
         while (true) {
             printMenu(managerOptions);
-            int choice = scanner.nextInt();
 
-            switch (choice) {
-                case 1:
-                    System.out.print("Enter Employee's First Name: ");
-                    String addFirstName = scanner.next();
-                    System.out.print("Enter Employee's Last Name: ");
-                    String addLastName = scanner.next();
-                    System.out.print("Enter Employee's Role (No Spaces!): ");
-                    String addRole = scanner.next();
-                    System.out.print("Enter Employee's ID: ");
-                    int addEmployeeId = scanner.nextInt();
-                    System.out.print("Enter Employee's Phone: ");
-                    String addPhone = scanner.next();
+            try {
+                int choice = scanner.nextInt();
 
-                    Manager.addEmployee(addFirstName, addLastName, addRole, addEmployeeId, addPhone);
-                    break;
-                case 2:
-                    // Assuming you want to remove an employee by providing first and last names
-                    System.out.print("Enter Employee's First Name: ");
-                    String removeFirstName = scanner.next();
-                    System.out.print("Enter Employee's Last Name: \n");
-                    String removeLastName = scanner.next();
-                    Manager.removeEmployee(removeFirstName, removeLastName);
-                    break;
-                case 3:
-                    Manager.displayEmployeeList();
-                    break;
-                case 4:
-                    Manager.viewZooStat();
-                    break;
-                case 5:
-                    System.out.print("\nReturning to previous menu!\n");
-                    manageEmployee();
-                    break;
-                default:
-                    System.out.println("\nInvalid choice!\n");
-                    break;
+                if (choice < 1 || choice > managerOptions.length) {
+                    System.out.println("\n Please enter an integer between 1 and " + managerOptions.length);
+                    continue; // restart the loop
+                }
+
+                switch (choice) {
+                    case 1:
+                        System.out.print("Enter Employee's First Name: ");
+                        String addFirstName = scanner.next();
+                        System.out.print("Enter Employee's Last Name: ");
+                        String addLastName = scanner.next();
+                        System.out.print("Enter Employee's Role (No Spaces!): ");
+                        String addRole = scanner.next();
+                        System.out.print("Enter Employee's ID: ");
+                        int addEmployeeId = scanner.nextInt();
+                        System.out.print("Enter Employee's Phone: ");
+                        String addPhone = scanner.next();
+
+                        Manager.addEmployee(addFirstName, addLastName, addRole, addEmployeeId, addPhone);
+                        break;
+                    case 2:
+                        // Assuming you want to remove an employee by providing first and last names
+                        System.out.print("Enter Employee's First Name: ");
+                        String removeFirstName = scanner.next();
+                        System.out.print("Enter Employee's Last Name: ");
+                        String removeLastName = scanner.next();
+                        Manager.removeEmployee(removeFirstName, removeLastName);
+                        break;
+                    case 3:
+                        Manager.displayEmployeeList();
+                        break;
+                    case 4:
+                        Manager.viewZooStat();
+                        break;
+                    case 5:
+                        System.out.print("\nReturning to the previous menu!\n");
+                        return; // exit the method
+                    default:
+                        System.out.println("\nInvalid choice!\n");
+                        break;
+                }
+            } catch (Exception ex) {
+                System.out.println("\n Please enter an integer between 1 and " + managerOptions.length);
+                scanner.next();
             }
         }
     }
+
 
     private static void animalHandlerMenu() {
         String[] aHandlerOptions = {
@@ -212,34 +247,48 @@ public class MenuManager {
 
         while (true) {
             printMenu(aHandlerOptions);
-            int choice = scanner.nextInt();
 
-            switch (choice) {
-                case 1:
-                    AnimalFactory.createAnimal();
-                    break;
-                case 2:
-                    AnimalFactory.removeAnimal();
-                    break;
-                case 3:
-                    System.out.print("Enter Animal ID: ");
-                    int animalID = scanner.nextInt();
-                    System.out.print("Enter Enclosure ID: ");
-                    int enclosureID = scanner.nextInt();
-                    AnimalHandler.feedAnimal(animalID, enclosureID);
-                    break;
-                case 4:
-                    System.out.print("Enter Enclosure ID: ");
-                    enclosureID = scanner.nextInt();
-                    AnimalHandler.feedEnclosure(enclosureID);
-                    break;
-                case 5:
-                    System.out.print("\nReturning to previous menu!\n");
-                    manageEmployee();
+            try {
+                int choice = scanner.nextInt();
+
+                if (choice < 1 || choice > aHandlerOptions.length) {
+                    System.out.println("\n Please enter an integer between 1 and " + aHandlerOptions.length);
+                    continue; // restart the loop
+                }
+
+                switch (choice) {
+                    case 1:
+                        AnimalFactory.createAnimal();
+                        break;
+                    case 2:
+                        AnimalFactory.removeAnimal();
+                        break;
+                    case 3:
+                        System.out.print("Enter Animal ID: ");
+                        int animalID = scanner.nextInt();
+                        System.out.print("Enter Enclosure ID: ");
+                        int enclosureID = scanner.nextInt();
+                        AnimalHandler.feedAnimal(animalID, enclosureID);
+                        break;
+                    case 4:
+                        System.out.print("Enter Enclosure ID: ");
+                        enclosureID = scanner.nextInt();
+                        AnimalHandler.feedEnclosure(enclosureID);
+                        break;
+                    case 5:
+                        System.out.print("\nReturning to the previous menu!\n");
+                        return; // exit the method
+                    default:
+                        System.out.println("\nInvalid choice!\n");
+                        break;
+                }
+            } catch (Exception ex) {
+                System.out.println("\n Please enter an integer between 1 and " + aHandlerOptions.length);
+                scanner.next();
             }
-
         }
     }
+
 
     private static void vetMenu() {
         String[] vetOptions = {
@@ -250,26 +299,40 @@ public class MenuManager {
 
         while (true) {
             printMenu(vetOptions);
-            int choice = scanner.nextInt();
 
-            switch (choice) {
-                case 1:
-                    System.out.print("Enter Animal ID: ");
-                    int animalID = scanner.nextInt();
-                    System.out.print("Enter Enclosure ID: ");
-                    int enclosureID = scanner.nextInt();
-                    Veterinarian.treatAnimal(animalID, enclosureID);
-                    break;
-                case 2:
-                    Veterinarian.viewAnimalHealth();
-                    break;
-                case 3:
-                    System.out.print("\nReturning to previous menu!\n");
-                    manageEmployee();
-                    break;
+            try {
+                int choice = scanner.nextInt();
+
+                if (choice < 1 || choice > vetOptions.length) {
+                    System.out.println("\n Please enter an integer between 1 and " + vetOptions.length);
+                    continue; // restart the loop
+                }
+
+                switch (choice) {
+                    case 1:
+                        System.out.print("Enter Animal ID: ");
+                        int animalID = scanner.nextInt();
+                        System.out.print("Enter Enclosure ID: ");
+                        int enclosureID = scanner.nextInt();
+                        Veterinarian.treatAnimal(animalID, enclosureID);
+                        break;
+                    case 2:
+                        Veterinarian.viewAnimalHealth();
+                        break;
+                    case 3:
+                        System.out.print("\nReturning to the previous menu!\n");
+                        return; // exit the method
+                    default:
+                        System.out.println("\nInvalid choice!\n");
+                        break;
+                }
+            } catch (Exception ex) {
+                System.out.println("\n Please enter an integer between 1 and " + vetOptions.length);
+                scanner.next(); // clear the buffer
             }
         }
     }
+
 }
 
 

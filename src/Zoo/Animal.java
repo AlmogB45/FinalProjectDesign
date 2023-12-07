@@ -1,10 +1,4 @@
 package Zoo;
-
-import Interfaces.AnimalObserver;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class Animal {
     private String type;
     private String name;
@@ -15,8 +9,6 @@ public class Animal {
     private String color;
     private int animalID;
     private int enclosureID;
-
-    private List<AnimalObserver> observers = new ArrayList<>();
 
     public Animal(String type, String name, int age, double weight, boolean isSick, String color, int animalID, int enclosureID) {
         this.type = type;
@@ -68,18 +60,5 @@ public class Animal {
         return enclosureID;
     }
 
-    public void addObserver(AnimalObserver observer) {
-        observers.add(observer);
-    }
-
-    public void removeObserver(AnimalObserver observer) {
-        observers.remove(observer);
-    }
-
-    public void notifyObservers() {
-        for (AnimalObserver observer : observers) {
-            observer.update(this);
-        }
-    }
 }
 

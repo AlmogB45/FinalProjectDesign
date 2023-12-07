@@ -1,6 +1,5 @@
 package libs;
 
-import Interfaces.AnimalObserver;
 import Zoo.Zoo;
 import Zoo.Animal;
 
