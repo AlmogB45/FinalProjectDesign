@@ -27,11 +27,12 @@ public class MenuManager {
         int option = 1;
         System.out.println("\n|---Zoo Menu---|\n");
         String[] options = {"1 - Visitors",
-                "2 - Employees\n",
+                "2 - Employees",
+                "3 - Exit\n"
         };
         scanner = new Scanner(System.in);
 
-        while (option != 4) {
+        while (option != 3) {
             printMenu(options);
             try {
                 option = scanner.nextInt();
@@ -41,6 +42,9 @@ public class MenuManager {
                         break;
                     case 2:
                         manageEmployee();
+                        break;
+                    case 3:
+                        System.out.print("Thank you for visiting, see you again soon!\n");
                         break;
                     default:
                         System.out.println("\nInvalid choice!\n");
@@ -84,6 +88,8 @@ public class MenuManager {
                     Visitor.removeVisitorFromZoo(checkOutFirstName, checkOutLastName);
                     break;
                 case 3:
+                    System.out.print("\nReturning to previous menu!");
+                    Menu();
                     break;
             }
         }
@@ -116,7 +122,11 @@ public class MenuManager {
 
                 case 3:
                     vetMenu();
-                    return;
+                    break;
+                case 4:
+                    System.out.print("\nReturning to previous menu!");
+                    Menu();
+                    break;
 
                 default:
                     System.out.println("\nInvalid choice!\n");
@@ -130,7 +140,7 @@ public class MenuManager {
         String managerFirstName = scanner.next();
         System.out.print("Enter Manager's Last Name: ");
         String managerLastName = scanner.next();
-        System.out.print("Enter Manager's Phone: \n");
+        System.out.print("Enter Manager's Phone: ");
         String managerPhone = scanner.next();
 
         // Create a new Manager instance
@@ -143,7 +153,8 @@ public class MenuManager {
         String[] managerOptions = {"\n1 - Add an employee",
                 "2 - Remove an employee",
                 "3 - Display all employees",
-                "4 - View Zoo statistics\n"
+                "4 - View Zoo statistics",
+                "5 - Back\n"
         };
 
         while (true) {
@@ -180,6 +191,8 @@ public class MenuManager {
                     Manager.viewZooStat();
                     break;
                 case 5:
+                    System.out.print("\nReturning to previous menu!");
+                    manageEmployee();
                     break;
                 default:
                     System.out.println("\nInvalid choice!\n");
@@ -193,7 +206,8 @@ public class MenuManager {
                 "\n1 - Add Animal",
                 "2 - Remove Animal",
                 "3 - Feed Animal",
-                "4 - Feed Enclosure\n"
+                "4 - Feed Enclosure",
+                "5 - Back\n"
         };
 
         while (true) {
@@ -219,6 +233,9 @@ public class MenuManager {
                     enclosureID = scanner.nextInt();
                     AnimalHandler.feedEnclosure(enclosureID);
                     break;
+                case 5:
+                    System.out.print("\nReturning to previous menu!");
+                    manageEmployee();
             }
 
         }
@@ -227,7 +244,8 @@ public class MenuManager {
     private static void vetMenu() {
         String[] vetOptions = {
                 "\n1 - Treat Animal",
-                "2 - View Animals Health\n"
+                "2 - View Animals Health",
+                "3 - Back"
         };
 
         while (true) {
@@ -243,6 +261,9 @@ public class MenuManager {
                 case 2:
                     Veterinarian.viewAnimalHealth();
                     break;
+                case 3:
+                    System.out.print("\nReturning to previous menu!");
+                    manageEmployee();
             }
         }
     }
