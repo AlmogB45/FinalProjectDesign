@@ -41,7 +41,6 @@ public class Visitor extends Person {
 
 
     public static void removeVisitorFromZoo(String firstName, String lastName) {
-        // Specify the path of the text file
 
         Path path = Paths.get(filePath);
 
@@ -56,12 +55,10 @@ public class Visitor extends Person {
                 if (!line.contains("Visitor Name: " + firstName + " " + lastName)) {
                     content.append(line).append("\n");
                 } else {
-                    // Skip the entire entry for the specified visitor
                     skipVisitorEntry(reader);
                 }
             }
 
-            // Close the reader
             reader.close();
 
             // Write the updated content back to the file

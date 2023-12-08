@@ -6,11 +6,11 @@ import Zoo.*;
 
 
 public class AnimalHandler extends Employee {
-    private static AnimalHandler instance = new AnimalHandler(getFirstName(), getLastName(), getPhone(), getEmployeeId(),getRole());
+    private static AnimalHandler instance;
     private static final Zoo zoo = Manager.zoo;
 
     private AnimalHandler(String firstName, String lastName, String phone, int employeeId, String role) {
-        super("defaultFirstName", "defaultLastName", "defaultPhone", 0, "defaultRole");
+        super(firstName, lastName, phone, employeeId, role);
     }
 
     public static AnimalHandler getInstance() {
@@ -36,12 +36,8 @@ public class AnimalHandler extends Employee {
                 animalName = animal.getName();
                 animalType = animal.getType();
 
-                // Perform feeding action here (if needed)
-
-                // Display a message indicating that the animal was fed successfully
                 System.out.println("Animal: " + animalName + " from type: " + animalType + " with ID: " + animalID + " in Enclosure: " + enclosureID + " fed successfully!");
 
-                // Break out of the loop once the animal is found and fed
                 break;
             }
         }
@@ -67,12 +63,10 @@ public class AnimalHandler extends Employee {
         // Feed all animals in the specified enclosure using feedAnimal method
         for (Animal animal : zoo.getAnimals()) {
             if (animal.getEnclosureID() == enclosureID) {
-                // Perform feeding action here (if needed)
                 feedAnimal(animal.getAnimalID(), enclosureID);
             }
         }
 
-        // Display a message indicating that all animals in the enclosure were fed successfully
         System.out.println("\nEnclosure " + enclosureID + " fed successfully!");
 
         // Display updated statistics after feeding

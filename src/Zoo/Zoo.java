@@ -71,7 +71,7 @@ public class Zoo {
 
             return true;
         } else {
-            return false; // Animal not found
+            return false;
         }
     }
 

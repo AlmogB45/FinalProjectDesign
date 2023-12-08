@@ -23,6 +23,7 @@ public class Manager extends Employee {
     public static void addEmployee(String firstName, String lastName, String role, int employeeId, String phone) {
         Path path = Paths.get(filePath);
 
+        // Writes into the file using the following format.
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(path.toFile(), true))) {
             writer.write("Employee Name: " + firstName + " " + lastName + "\n");
             writer.write("Role: " + role + "\n");
@@ -56,7 +57,6 @@ public class Manager extends Employee {
                 }
             }
 
-            // Close the reader
             reader.close();
 
             // Write the updated content back to the file
@@ -113,7 +113,7 @@ public class Manager extends Employee {
         System.out.println("\nNumber of Sick and Healthy Animals:");
         int numSickAnimals = zoo.getNumSickAnimals();
         int numHealthyAnimals = zoo.getNumHealthyAnimals();
-        System.out.println("Sick Animals: " + numSickAnimals);
+        System.out.println("\nSick Animals: " + numSickAnimals);
         System.out.println("Healthy Animals: " + numHealthyAnimals);
     }
 

@@ -26,7 +26,7 @@ public class Veterinarian extends Employee {
                 animalName = animal.getName();
                 animalType = animal.getType();
 
-                // Perform treatment action here
+                // Performing the treatment and updating relevant stats
                 if (animal.isSick()) {
                     animal.setSick(false);
                     zoo.updateSickAnimalCount(zoo.getNumSickAnimals() - 1);
@@ -63,38 +63,5 @@ public class Veterinarian extends Employee {
         System.out.println("Sick Animals: " + numSickAnimals);
         System.out.println("Healthy Animals: " + numHealthyAnimals);
     }
-
-    //    public static void treatAnimal(int animalID) {
-//        if (zoo == null) {
-//            System.out.println("Zoo not set.");
-//            return;
-//        }
-//
-//        // Find the animal with the specified ID
-//        Animal targetAnimal = null;
-//        for (Animal animal : zoo.getAnimals()) {
-//            if (animal.getAnimalID() == animalID) {
-//                targetAnimal = animal;
-//                break;
-//            }
-//        }
-//
-//        // If the animal is found, update its health status
-//        if (targetAnimal != null) {
-//            if (targetAnimal.isSick()) {
-//                targetAnimal.setSick(false);
-//                zoo.updateSickAnimalCount(zoo.getNumSickAnimals() - 1);
-//                zoo.updateHealthyAnimalCount(zoo.getNumHealthyAnimals() + 1);
-//                System.out.println("Animal with ID " + animalID + " has been treated and is now healthy.");
-//            } else {
-//                System.out.println("Animal with ID " + animalID + " is already healthy.");
-//            }
-//        } else {
-//            System.out.println("Error: Animal with ID " + animalID + " not found in the zoo.");
-//        }
-//
-//        // Display updated statistics after treatment
-//        viewZooStat();
-//    }
 }
 

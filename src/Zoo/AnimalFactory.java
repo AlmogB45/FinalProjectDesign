@@ -1,7 +1,6 @@
 package Zoo;
 
 import Interfaces.AnimalCreator;
-
 import java.util.Scanner;
 
 public class AnimalFactory {
@@ -41,6 +40,7 @@ public class AnimalFactory {
         System.out.print("Enter EnclosureID: ");
         int enclosureID = scanner.nextInt();
 
+        // Provide a random chance for animal to be sick or healthy
         boolean isSick = Math.random() < 0.5;
 
         Animal newAnimal = animalCreator.createAnimal(type, name, age, weight, isSick, color, animalID, enclosureID);
@@ -77,7 +77,6 @@ public class AnimalFactory {
         // Attempt to remove the animal
         boolean removed = zoo.removeAnimal(animalIDToRemove);
 
-        // Print the result
         if (removed) {
             System.out.println("Animal with ID " + animalIDToRemove + " removed successfully!");
 
@@ -100,7 +99,6 @@ public class AnimalFactory {
             zoo.updateSickAnimalCount(numSickAnimals);
             zoo.updateHealthyAnimalCount(numHealthyAnimals);
 
-            // Display updated statistics
             System.out.println("Updated Animal Count: " + zoo.getAnimalCount());
             System.out.println("Updated Enclosure Count: " + zoo.getEnclosureCount());
             System.out.println("Average Animal Age: " + zoo.getAverageAnimalAge());
@@ -111,33 +109,4 @@ public class AnimalFactory {
             System.out.println("Animal with ID " + animalIDToRemove + " not found in the zoo.");
         }
     }
-
-//public static void removeAnimal() {
-//        Scanner scanner = new Scanner(System.in);
-//
-//        System.out.print("Enter AnimalID to remove: ");
-//        int animalIDToRemove = scanner.nextInt();
-//
-//        // Attempt to remove the animal
-//        boolean removed = zoo.removeAnimal(animalIDToRemove);
-//
-//        // Print the result
-//        if (removed) {
-//            System.out.println("Animal with ID " + animalIDToRemove + " removed successfully!");
-//        } else {
-//            System.out.println("Animal with ID " + animalIDToRemove + " not found in the zoo.");
-//        }
-//
-//        // Update counts and averages in the zoo
-//        zoo.updateAnimalCount(zoo.getNumAnimals());
-//        zoo.updateEnclosureCount(zoo.getNumEnclosures());
-//
-//        // Display updated statistics
-//        System.out.println("Updated Animal Count: " + zoo.getAnimalCount());
-//        System.out.println("Updated Enclosure Count: " + zoo.getEnclosureCount());
-//        System.out.println("Average Animal Age: " + zoo.getAverageAnimalAge());
-//        System.out.println("Average Animal Weight: " + zoo.getAverageAnimalWeight());
-//        System.out.println("Sick Animals: " + zoo.getNumSickAnimals());
-//        System.out.println("Healthy Animals: " + zoo.getNumHealthyAnimals());
-//    }
 }

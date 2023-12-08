@@ -1,8 +1,6 @@
 import libs.AnimalHandler;
 import libs.Manager;
 import libs.Veterinarian;
-import libs.Visitor;
-import Zoo.Zoo;
 import Zoo.AnimalFactory;
 import java.util.Scanner;
 
@@ -71,7 +69,7 @@ public class MenuManager {
 
                 if (choice < 1 || choice > visitorOptions.length) {
                     System.out.println("\n Please enter an integer between 1 and " + visitorOptions.length);
-                    continue; // restart the loop
+                    continue;
                 }
 
                 switch (choice) {
@@ -89,7 +87,6 @@ public class MenuManager {
                         String checkOutFirstName = scanner.next();
                         System.out.print("Enter Visitor's Last Name: ");
                         String checkOutLastName = scanner.next();
-                        // rest of the code...
                         break;
                     case 3:
                         System.out.print("\nReturning to the previous menu!\n");
@@ -101,7 +98,7 @@ public class MenuManager {
 
             } catch (Exception ex) {
                 System.out.println("\n Please enter a valid integer.");
-                scanner.next(); // clear the buffer
+                scanner.next();
             }
         }
     }
@@ -123,7 +120,7 @@ public class MenuManager {
 
                 if (choice < 1 || choice > employeeOptions.length) {
                     System.out.println("\n Please enter an integer between 1 and " + employeeOptions.length);
-                    continue; // restart the loop
+                    continue;
                 }
 
                 switch (choice) {
@@ -145,7 +142,7 @@ public class MenuManager {
 
                     case 4:
                         System.out.print("\nReturning to previous menu!\n");
-                        return; // exit the method
+                        return;
 
                     default:
                         System.out.println("\nInvalid choice!\n");
@@ -153,7 +150,7 @@ public class MenuManager {
                 }
             } catch (Exception ex) {
                 System.out.println("\nPlease enter an integer between 1 and " + employeeOptions.length);
-                scanner.next(); // clear the buffer
+                scanner.next();
             }
         }
     }
@@ -189,7 +186,7 @@ public class MenuManager {
 
                 if (choice < 1 || choice > managerOptions.length) {
                     System.out.println("\n Please enter an integer between 1 and " + managerOptions.length);
-                    continue; // restart the loop
+                    continue;
                 }
 
                 switch (choice) {
@@ -208,7 +205,6 @@ public class MenuManager {
                         Manager.addEmployee(addFirstName, addLastName, addRole, addEmployeeId, addPhone);
                         break;
                     case 2:
-                        // Assuming you want to remove an employee by providing first and last names
                         System.out.print("Enter Employee's First Name: ");
                         String removeFirstName = scanner.next();
                         System.out.print("Enter Employee's Last Name: ");
@@ -223,7 +219,7 @@ public class MenuManager {
                         break;
                     case 5:
                         System.out.print("\nReturning to the previous menu!\n");
-                        return; // exit the method
+                        return;
                     default:
                         System.out.println("\nInvalid choice!\n");
                         break;
@@ -253,7 +249,7 @@ public class MenuManager {
 
                 if (choice < 1 || choice > aHandlerOptions.length) {
                     System.out.println("\n Please enter an integer between 1 and " + aHandlerOptions.length);
-                    continue; // restart the loop
+                    continue;
                 }
 
                 switch (choice) {
@@ -277,7 +273,7 @@ public class MenuManager {
                         break;
                     case 5:
                         System.out.print("\nReturning to the previous menu!\n");
-                        return; // exit the method
+                        return;
                     default:
                         System.out.println("\nInvalid choice!\n");
                         break;
@@ -305,7 +301,7 @@ public class MenuManager {
 
                 if (choice < 1 || choice > vetOptions.length) {
                     System.out.println("\n Please enter an integer between 1 and " + vetOptions.length);
-                    continue; // restart the loop
+                    continue;
                 }
 
                 switch (choice) {
@@ -321,14 +317,14 @@ public class MenuManager {
                         break;
                     case 3:
                         System.out.print("\nReturning to the previous menu!\n");
-                        return; // exit the method
+                        return;
                     default:
                         System.out.println("\nInvalid choice!\n");
                         break;
                 }
             } catch (Exception ex) {
                 System.out.println("\n Please enter an integer between 1 and " + vetOptions.length);
-                scanner.next(); // clear the buffer
+                scanner.next();
             }
         }
     }

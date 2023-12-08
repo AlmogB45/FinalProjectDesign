@@ -1,6 +1,6 @@
 package libs;
 
-public class Employee extends Person {
+abstract class Employee extends Person {
     private static int employeeId;
     private static String role;
 
