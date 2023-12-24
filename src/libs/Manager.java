@@ -24,26 +24,25 @@ public class Manager extends Employee {
 
     private static void checkAndAssignManager() {
         if (zoo != null && zoo.getManager() == null) {
-            System.out.println("Zoo does not have a manager. Creating a new Manager.");
+            System.out.println("\nZoo does not have a manager. Creating a new Manager.");
             createManager();
         }
     }
 
     private static void createManager() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter Manager's First Name: ");
+        System.out.print("\nEnter Manager's First Name: ");
         String managerFirstName = scanner.next();
-        System.out.print("Enter Manager's Last Name: ");
+        System.out.print("\nEnter Manager's Last Name: ");
         String managerLastName = scanner.next();
-        System.out.print("Enter Manager's Phone: ");
+        System.out.print("\nEnter Manager's Phone: ");
         String managerPhone = scanner.next();
 
         // Create a new Manager instance
         Manager manager = new Manager(managerFirstName, managerLastName, managerPhone, 1, "Manager");
         zoo.setManager(manager);
-        System.out.println("Manager instance created successfully.");
+        System.out.println("\nManager instance created successfully!");
     }
-
 
     public static void addEmployee(String firstName, String lastName, String role, int employeeId, String phone) {
         Path path = Paths.get(filePath);

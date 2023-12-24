@@ -7,6 +7,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter Zoo Name: ");
+
         String zooName = scanner.nextLine();
 
         ZooBuild zooBuild = new ZooBuild.ZooBuilder()
@@ -17,6 +18,12 @@ public class Main {
 
         // Setting the correct Zoo object for the manager
         Manager.setZoo(zoo);
+
+        System.out.print("\nThe Zoo is currently empty, please add animals!\n\n");
+
+        AnimalFactory.createAnimal(zoo);
+        AnimalFactory.createAnimal(zoo);
+        AnimalFactory.createAnimal(zoo);
 
         // Setting the AnimalFactory into the correct Zoo object
         AnimalFactory animalFactory = new AnimalFactory(zoo);

@@ -13,7 +13,7 @@ public class Zoo {
     private int healthyAnimalCount;
     private int sickAnimalCount;
     private List<Animal> animals;
-    private List<String> enclosureNames;
+
     private List<Integer> animalsInEnclosures;  // List to store the number of animals in each enclosure
 
     public Zoo(String zooName, ZooBuild zooBuild) {
@@ -22,7 +22,6 @@ public class Zoo {
         this.enclosureCount = zooBuild.getEnclosureCount();
         this.animals = new ArrayList<>();
         this.animalsInEnclosures = new ArrayList<>();
-        this.enclosureNames = new ArrayList<>();
     }
 
     public Zoo(String zooName) {
@@ -110,23 +109,6 @@ public class Zoo {
             return animalsInEnclosures.get(enclosureID);
         } else {
             return 0;
-        }
-    }
-
-    public void setEnclosureName(int enclosureID, String enclosureName) {
-        // Ensure that the enclosureNames list has enough elements
-        while (enclosureNames.size() <= enclosureID) {
-            enclosureNames.add(null);
-        }
-
-        enclosureNames.set(enclosureID, enclosureName);
-    }
-
-    public String getEnclosureName(int enclosureID) {
-        if (enclosureID < enclosureNames.size()) {
-            return enclosureNames.get(enclosureID);
-        } else {
-            return null;  // or handle the case as needed
         }
     }
 

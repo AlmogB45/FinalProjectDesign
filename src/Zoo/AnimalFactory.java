@@ -4,7 +4,7 @@ import Interfaces.AnimalCreator;
 import java.util.Scanner;
 
 public class AnimalFactory {
-    private static Zoo zoo;
+    public static Zoo zoo;
     private static AnimalCreator animalCreator = new GenericAnimalCreator();
 
     public AnimalFactory(Zoo zoo) {
@@ -15,7 +15,7 @@ public class AnimalFactory {
         animalCreator = creator;
     }
 
-    public static void createAnimal() {
+    public static void createAnimal(Zoo zoo) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter Type (e.g., Elephant): ");
@@ -37,14 +37,8 @@ public class AnimalFactory {
         System.out.print("Enter AnimalID: ");
         int animalID = scanner.nextInt();
 
-        System.out.print("Enter EnclosureID: ");
+        System.out.print("Enter EnclosureID (Start with 0): ");
         int enclosureID = scanner.nextInt();
-        scanner.nextLine();
-
-        System.out.print("Enter Enclosure Name: ");
-        String enclosureName = scanner.nextLine();
-
-        zoo.setEnclosureName(enclosureID, enclosureName);
 
         // Provide a random chance for animal to be sick or healthy
         boolean isSick = Math.random() < 0.5;
@@ -65,7 +59,7 @@ public class AnimalFactory {
         }
 
         // Display updated statistics
-        System.out.println("Animal added successfully!");
+        System.out.println("\n\nAnimal added successfully!\n");
         System.out.println("Updated Animal Count: " + zoo.getAnimalCount());
         System.out.println("Updated Enclosure Count: " + zoo.getEnclosureCount());
         System.out.println("Average Animal Age: " + zoo.getAverageAnimalAge());

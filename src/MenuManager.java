@@ -132,7 +132,7 @@ public class MenuManager {
                         break;
 
                     case 2:
-                        animalHandlerMenu();
+                        animalHandlerMenu(AnimalFactory.zoo);
                         break;
 
                     case 3:
@@ -216,7 +216,7 @@ public class MenuManager {
     }
 
 
-    private static void animalHandlerMenu() {
+    private static void animalHandlerMenu(Zoo zoo) {
         String[] aHandlerOptions = {
                 "\n1 - Add Animal",
                 "2 - Remove Animal",
@@ -238,7 +238,7 @@ public class MenuManager {
 
                 switch (choice) {
                     case 1:
-                        AnimalFactory.createAnimal();
+                        AnimalFactory.createAnimal(zoo);
                         break;
                     case 2:
                         AnimalFactory.removeAnimal();
