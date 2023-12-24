@@ -1,26 +1,38 @@
 package Zoo;
 
+import libs.Manager;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Zoo {
+    private String zooName;
+    private Manager manager;
     private int animalCount;
     private int enclosureCount;
     private int healthyAnimalCount;
     private int sickAnimalCount;
     private List<Animal> animals;
+    private List<String> enclosureNames;
     private List<Integer> animalsInEnclosures;  // List to store the number of animals in each enclosure
 
-    public Zoo(ZooBuild zooBuild) {
+    public Zoo(String zooName, ZooBuild zooBuild) {
+        this.zooName = zooName;
         this.animalCount = zooBuild.getAnimalCount();
         this.enclosureCount = zooBuild.getEnclosureCount();
         this.animals = new ArrayList<>();
         this.animalsInEnclosures = new ArrayList<>();
+        this.enclosureNames = new ArrayList<>();
     }
 
-    public Zoo() {
+    public Zoo(String zooName) {
+        this.zooName = zooName;
         animals = new ArrayList<>();
         animalsInEnclosures = new ArrayList<>();
+    }
+
+    public String getZooName() {
+        return zooName;
     }
 
     public int getAnimalCount() {
@@ -101,6 +113,23 @@ public class Zoo {
         }
     }
 
+    public void setEnclosureName(int enclosureID, String enclosureName) {
+        // Ensure that the enclosureNames list has enough elements
+        while (enclosureNames.size() <= enclosureID) {
+            enclosureNames.add(null);
+        }
+
+        enclosureNames.set(enclosureID, enclosureName);
+    }
+
+    public String getEnclosureName(int enclosureID) {
+        if (enclosureID < enclosureNames.size()) {
+            return enclosureNames.get(enclosureID);
+        } else {
+            return null;  // or handle the case as needed
+        }
+    }
+
     public double getAverageAnimalAge() {
         if (animals.isEmpty()) {
             return 0.0;
@@ -151,5 +180,13 @@ public class Zoo {
 
     public void updateHealthyAnimalCount(int newCount) {
         healthyAnimalCount = newCount;
+    }
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
+    }
+
+    public Manager getManager() {
+        return manager;
     }
 }

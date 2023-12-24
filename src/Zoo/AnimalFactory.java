@@ -39,6 +39,12 @@ public class AnimalFactory {
 
         System.out.print("Enter EnclosureID: ");
         int enclosureID = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.print("Enter Enclosure Name: ");
+        String enclosureName = scanner.nextLine();
+
+        zoo.setEnclosureName(enclosureID, enclosureName);
 
         // Provide a random chance for animal to be sick or healthy
         boolean isSick = Math.random() < 0.5;

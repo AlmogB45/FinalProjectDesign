@@ -2,16 +2,19 @@ import libs.AnimalHandler;
 import libs.Manager;
 import libs.Veterinarian;
 import Zoo.AnimalFactory;
+import Zoo.*;
 import java.util.Scanner;
 
 
 public class MenuManager {
     private static Scanner scanner;
+    private static Zoo currentZoo;
     private static Manager manager;
 
 
-    public MenuManager() {
+    public MenuManager(Zoo zoo) {
         this.scanner = new Scanner(System.in);
+        currentZoo = zoo;
     }
 
     public static void printMenu(String[] options) {
@@ -23,7 +26,7 @@ public class MenuManager {
 
     public static void Menu() {
         int option = 1;
-        System.out.println("\n|---Zoo Menu---|\n");
+        System.out.println("\n|---Welcome to " + currentZoo.getZooName() + " Zoo!---|\n");
         String[] options = {"1 - Visitors",
                 "2 - Employees",
                 "3 - Exit\n"
@@ -125,10 +128,6 @@ public class MenuManager {
 
                 switch (choice) {
                     case 1:
-                        if (manager == null) {
-                            System.out.println("Manager instance doesn't exist. Creating a new Manager.\n");
-                            createManager();
-                        }
                         managerMenu();
                         break;
 
@@ -153,21 +152,6 @@ public class MenuManager {
                 scanner.next();
             }
         }
-    }
-
-
-    private static void createManager() {
-        System.out.print("Enter Manager's First Name: ");
-        String managerFirstName = scanner.next();
-        System.out.print("Enter Manager's Last Name: ");
-        String managerLastName = scanner.next();
-        System.out.print("Enter Manager's Phone: ");
-        String managerPhone = scanner.next();
-
-        // Create a new Manager instance
-        manager = new Manager(managerFirstName, managerLastName, managerPhone, 1, "Manager");
-        System.out.println("Manager instance created successfully.");
-
     }
 
     private static void managerMenu() {
